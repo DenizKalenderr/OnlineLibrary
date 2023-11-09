@@ -1,0 +1,30 @@
+﻿@model Hire
+
+<form method="post">
+    <input asp-for="Id" hidden /> 
+    <div class="border p-3 mt-5">
+        <div class="row pb-3">
+            <h2 class="text-primary">Kiralama Kaydı Sil</h2>
+            </hr>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="StudentId" class="p-0"></label>
+            <input asp-for="StudentId" disabled class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="BookId" class="p-0"></label>
+            <select asp-for="BookId" asp-items="ViewBag.BookList" disabled class="form-select">
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-lg btn-primary" style="width:250px">Kitap Kaydı Sil</button>
+
+        <a asp-controller="Hire" asp-action="Index" class="btn btn-lg btn-primary" style="width:250px">
+            Kiralamalara Geri Dön
+        </a>
+
+
+    </div>
+</form>

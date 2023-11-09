@@ -1,0 +1,62 @@
+﻿@model List<Hire>
+
+@if (TempData["basarili"] != null)
+{
+    <h2 style="color:brown; font-size: 15px;">@TempData["basarili"]</h2>
+}
+
+    <div class="container">
+        <div class="row pt-3 pb-4">
+            <div>
+            <h1>Kitap Kiralamaları</h1>
+            </div>
+
+        </div>
+        
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        Id
+                     </th>
+                     <th>
+                         StudentId
+                     </th>
+                     <th>
+                         BookId
+                     </th>
+                        
+                     <th>
+                     </th>
+                     <th>
+                     </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach(var hire in Model)
+                {    
+                    <tr>
+                        <td>@hire.Id</td>
+                        <td>@hire.StudentId</td>
+                        <td>@hire.Book.BookName</td>
+                       
+                        <td>
+                        <a asp-controller="Hire" asp-action="AddUpdate" asp-route-id="@hire.Id" type="button" class="btn btn-outline-success" style="width:250px">Güncelle</a>
+                        </td>
+                        <td>
+                        <a asp-controller="Hire" asp-action="Delete" asp-route-id="@hire.Id" type="button" class="btn btn-danger" style="width:250px">Sil</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div class = "row pt-3 pb-2">
+            <div>
+            <a asp-controller="Hire" asp-action="AddUpdate" class="btn btn-lg btn-primary" type="button">
+                    Yeni Kiralama Kaydı Oluştur
+                </a>
+            </div>
+        </div>
+</div>

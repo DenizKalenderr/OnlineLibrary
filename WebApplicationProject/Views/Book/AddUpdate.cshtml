@@ -1,0 +1,80 @@
+﻿@model Book
+
+<form method="post" enctype="multipart/form-data">
+    <input asp-for="ImageUrl" hidden />
+
+    <div class="row">
+
+        <div class="col-10">
+
+            <div class="border p-3 mt-5">
+                <div class="row pb-3">
+                    <h2 class="text-primary">@(Model == null ? "Kitap Ekle" : "Kitap Güncelle")</h2>
+                    </hr>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="BookName" class="p-0"></label>
+                    <input asp-for="BookName" class="form-control" />
+                    <span asp-validation-for="BookName" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="BookTypeId" class="p-0"></label>
+                    <select asp-for="BookTypeId" asp-items="ViewBag.BookTypeList" class="form-select">
+                    </select>
+
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Explain" class="p-0"></label>
+                    <input asp-for="Explain" class="form-control" />
+                    <span asp-validation-for="Explain" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Author" class="p-0"></label>
+                    <input asp-for="Author" class="form-control" />
+                    <span asp-validation-for="Author" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Price" class="p-0"></label>
+                    <input asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="ImageUrl" class="p-0"></label>
+                    <input type="file" name="file" class="form-control" />
+                </div>
+
+                @if (Model != null)
+                {
+                    <button type="submit" class="btn btn-lg btn-primary" style="width:250px">Güncelle</button>
+                }
+                else
+                {
+                    // Nesne gelmiyor yani yeni bir şey yok yani ekleyecek.
+                    <button type="submit" class="btn btn-lg btn-primary" style="width:250px">Kitap Ekle</button>
+                }
+
+                <a asp-controller="Book" asp-action="Index" class="btn btn-lg btn-primary" style="width:250px">
+                    Kitaplara Geri Dön
+                </a>
+
+
+            </div>
+
+        </div>
+        <div class="col-2">
+            @if (Model != null)
+            {
+                <img src="@Model.ImageUrl" width="100%"
+                     style="border-radius:7px; border:1px; solid ##bbb9b9" />
+            }
+
+        </div>
+
+    </div>
+    
+</form>
